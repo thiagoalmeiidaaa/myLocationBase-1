@@ -11,6 +11,7 @@ import {
 } from "react-native-paper";
 import myColors from "./assets/colors.json";
 import myColorsDark from "./assets/colorsDark.json";
+import { initializeServices } from './services/initServices';
 
 export default function App() {
   const [isSwitchOn, setIsSwitchOn] = useState(false); // variável para controle do darkMode
@@ -24,6 +25,10 @@ export default function App() {
     myOwnProperty: true,
     colors: myColors.colors,
   });
+
+  useEffect(() => {
+    initializeServices({ setIsSwitchOn, setLocations });
+  }, []);
 
   // load darkMode from AsyncStorage
   async function loadDarkMode() {}
